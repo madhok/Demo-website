@@ -1,0 +1,35 @@
+<html>
+<%= javascript_include_tag :defaults %>
+<head>
+  <%= javascript_include_tag "prototype" %>
+</head>
+<body>
+<% provide(:title, @user.name) %>
+
+<h1> Welcome to Job Portal <%=  @user.name%></h1>
+<h3> Name: <%=  @user.name %></h3>
+ <h3> Email Address: <%= @user.email %></h3>
+ <h3>Skill Set: <%= @user.skills %></h3>
+ <h3>Experience: <%= @user.experience%></h3>
+
+<div id="time_div">
+     I dont want to show your  password, but if you click
+     <%=  link_to "ShowPassword" ,{controller: "users" , action:'say_when', id: @user.id},
+     :remote => true,
+     :update => "div_hello",
+     :position => 'after'
+     %>
+     I will show it.
+   </div>
+<div id="div_hello"></div>
+<div class=row>
+  <div class=span2>
+    <%= link_to "Edit my account",edit_user_path(@user), class: "btn btn-large btn-primary" %>
+  </div>
+  <div class=span2>
+    <%= link_to 'Log off', {:action => 'home'}, class: "btn btn-large btn-primary" %>
+  </div>
+</div>
+
+</body>
+</html>

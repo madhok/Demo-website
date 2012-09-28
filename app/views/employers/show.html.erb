@@ -1,0 +1,49 @@
+<html>
+<head>
+  <%= javascript_include_tag "prototype" %>
+</head>
+<body>
+<% provide(:title, @employer.company) %>
+
+<h1> Welcome to Job Portal</h1>
+<h4> Company: <%=  @employer.company %></h4>
+<h4> Email Address: <%= @employer.email %></h4>
+
+
+<div class=row>
+  <div class=span2>
+    <%= link_to 'View my interviewees',{:action => 'interviewees', :controller => 'employers', :id => @employer.id}, class: "btn btn-small btn-primary" %>
+  </div>
+</div>
+
+
+<p>
+ <% @users = Array.new %>
+  <%@users = User.all%>
+  <% if @users.blank? %>
+    <p>There are no employees available.</p>
+<% else %>
+    <h4>List of candidates looking for job:</h4>
+    <% @users.each do |c| %>
+         <li>
+           <span class="name"><b>NAME : <%= c.name.upcase %></b></span>
+           <span class="skills">Skills Set : <%= c.skills.upcase %></span>
+           <span class="skills">Experience : <%= c.experience %></span>
+           <span class="skills">Email : <%= c.email %></span>
+            <%= button_to 'Add as interviewee',
+                         { :controller=> 'employers', :action=>'add_as_interviewee',
+                           :id=> @employer.id, :userid => c.id },:method => :put, class: "btn btn-large btn-small" %>
+         </li>
+      <% end %>
+<% end %>
+</p>
+
+
+<div class=row>
+   <div class=span2>
+    <%= link_to 'Log off',{:action => 'home', :controller => 'users'}, class: "btn btn-large btn-primary" %>
+  </div>
+</div>
+
+</body>
+</html>

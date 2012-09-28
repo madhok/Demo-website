@@ -1,0 +1,18 @@
+<% provide(:title, 'Home') %>
+<h1>Welcome to the Job Portal</h1>
+<div class=row>
+  <div class="span4">
+  <h2>Find job quick and easy</h2>
+  <p>
+    <%= link_to "Employee login", signin_path, class: "btn btn-large btn-primary" %>
+  </p>
+  </div>
+  <div class="span4 offset3">
+    <h2>Find and hire employee</h2>
+    <p>
+      <%= link_to "Employer login",employersignin_path, class: "btn btn-large btn-primary" %>
+    </p>
+  </div>
+</div>
+</body>
+</html>

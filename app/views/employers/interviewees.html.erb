@@ -1,0 +1,15 @@
+<h4>List of interviewees in your list:</h4>
+<% @employer.users.each do |c| %>
+    <li>
+      <span class="name"><b>NAME : <%= c.name.upcase %></b></span>
+      <span class="skills">Skills Set : <%= c.skills.upcase %></span>
+      <span class="skills">Experience : <%= c.experience %></span>
+      <span class="skills">Email : <%= c.email %></span>
+    </li>
+<% end %>
+
+<div class=row>
+  <div class=span2>
+    <%= link_to 'Back',{:action => 'show', :controller => 'employers', :id => @employer.id}, class: "btn btn-large btn-primary" %>
+  </div>
+</div>

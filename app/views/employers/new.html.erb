@@ -1,0 +1,16 @@
+<% provide(:title, 'Create') %>
+<h3>Create your profile </h3>
+
+<%= form_for(@employer) do |f| %>
+
+    <%= f.label :company %>
+    <%= f.text_field :company %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.submit "Create my account",  class: "btn btn-large btn-primary" %>
+<% end %>
